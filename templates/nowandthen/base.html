@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load nowandthen_template_tags %}
+<html>
+<head>
+<title>
+nowandthen -
+{% block title_block %}
+How to Tango with Django!
+{% endblock %}
+ </title>
+ </head>
+ <body>
+ <div>
+ {% block body_block %}
+ {% endblock %}
+ </div>
+ <div>
+{% block sidebar_block %}
+{% get_category_list category%}
+{% endblock %}
+</div>
+ <hr />
+ <div>
+    <ul>
+    {% if user.is_authenticated %}
+        <li><a href="{% url 'nowandthen:restricted' %}">Restricted Page</a></li>
+        <li><a href="{% url 'nowandthen:logout' %}">Logout</a></li>
+        <li><a href="{% url 'nowandthen:add_category' %}">Add a New Category</a></li>
+    {% else %}
+        <li><a href="{% url 'nowandthen:register' %}">Sign Up</a></li>
+        <li><a href="{% url 'nowandthen:login' %}">Login</a></li>
+    {% endif %}
+        <li><a href="{% url 'nowandthen:about' %}">About</a></li>
+        <li><a href="{% url 'nowandthen:index' %}">Index</a></li>
+    </ul>
+</div>
+</body>
+</html>
