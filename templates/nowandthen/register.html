@@ -4,12 +4,11 @@
 Register
 {% endblock %}
 {% block body_block %}
-<h1>Register for Rango</h1>
+<h1>Register for Now&Then</h1>
 {% if registered %}
-Rango says: <strong>thank you for registering!</strong>
-<a href="{% url 'nowandthen:index' %}">Return to the homepage.</a><br />
+<strong>thank you for registering!</strong>
 {% else %}
-Rango says: <strong>register here!</strong><br />
+<strong>register here!</strong><br />
 <form id="user_form" method="post" action="{% url 'nowandthen:register' %}"
 enctype="multipart/form-data">
 {% csrf_token %}
