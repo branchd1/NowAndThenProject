@@ -33,7 +33,7 @@ def add_pictures(request):
             print(form.errors)
 # Will handle the bad form, new form, or no form supplied cases.
 # Render the form with error messages (if any).
-    return render(request, 'nowandthen/add_category.html', {'form': form})
+    return render(request, 'nowandthen/add_pictures.html', {'form': form})
 
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
