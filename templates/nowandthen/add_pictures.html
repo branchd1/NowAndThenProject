@@ -1,0 +1,22 @@
+{% extends 'nowandthen/base.html' %}
+{% load staticfiles %}
+{% block title_block %}
+Add a category
+{% endblock %}
+{% block body_block %}
+<h1>Add a Picture</h1>
+<div>
+<form id="pictures_form" method="post" action="/nowandthen/add_pictures/">
+{% csrf_token %}
+{% for hidden in form.hidden_fields %}
+{{ hidden }}
+{% endfor %}
+{% for field in form.visible_fields %}
+{{ field.errors }}
+{{ field.help_text }}
+{{ field }}
+{% endfor %}
+<input type="submit" name="submit" value="Add Pictures" />
+</form>
+</div>
+{% endblock %}
