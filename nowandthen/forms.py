@@ -1,10 +1,21 @@
 from django import forms
-from nowandthen.models import Page, Category
+from nowandthen.models import Page, Category, Pictures
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth.models import User
 from nowandthen.models import UserProfile
 
+
+class PicturesForm(forms.ModelForm):
+    title = forms.CharField(help_text="What is your picture's title?")
+    description = forms.CharField(help_text="Please tell us about a bit about your picture.")
+    tag_one = forms.CharField(help_text="Please provide a word to describe your image. This will help people to find it")
+    tag_two = forms.CharField(help_text="Please give us an additional word to describe the picture.")
+    slug = forms.CharField(widget=forms.HiddenInput(), required=False)
+    class Meta:
+        model = Pictures
+        fields = ('image', 'title', 'description', 'tag_one', 'tag_two',)
+ 
 
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(help_text="Please enter the category name.")

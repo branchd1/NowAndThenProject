@@ -2,7 +2,9 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from nowandthen.models import Category
 from nowandthen.models import Page
+from nowandthen.models import Pictures
 from nowandthen.forms import CategoryForm
+from nowandthen.forms import PicturesForm
 from django.shortcuts import redirect
 from django.urls import reverse
 from nowandthen.forms import PageForm
