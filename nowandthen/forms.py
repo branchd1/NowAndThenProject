@@ -11,7 +11,9 @@ ERA_CHOICES= [
     ('2010-2020', '2010-2020'),
     ('2000-2010', '2000-2010'),
     ('1990s', '1990s'),
-    ('1980s', '1980s')
+    ('1980s', '1980s'),
+    ('1970s', '1970s'),
+    ('1960s and earlier', '1960s and earlier')
     ]
 
 class PicturesForm(forms.ModelForm):
