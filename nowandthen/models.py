@@ -6,11 +6,13 @@ class Pictures(models.Model):
     NAME_MAX_LENGTH = 128
     DESCRIPTION_MAX_LENGTH = 1000
     TAG_MAX_LENGTH = 50
+    ERA_MAX_LENGTH = 50
     image = models.ImageField(upload_to='shared_pics', unique=True) 
     title = models.CharField(max_length=NAME_MAX_LENGTH, blank=True)
     description = models.CharField(max_length=DESCRIPTION_MAX_LENGTH, blank=True)
     tag_one = models.CharField(max_length=TAG_MAX_LENGTH, blank=True)
     tag_two = models.CharField(max_length=TAG_MAX_LENGTH, blank=True)
+    era = models.CharField(max_length= ERA_MAX_LENGTH, blank=True)
     when_added = models.DateTimeField
     slug = models.ImageField(unique=True)
 

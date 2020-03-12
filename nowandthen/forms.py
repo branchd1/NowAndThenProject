@@ -6,15 +6,23 @@ from django.contrib.auth.models import User
 from nowandthen.models import UserProfile
 
 
+ERA_CHOICES= [
+    ('Present day', '2010s'),
+    ('2000-2010', '1990s'),
+    ('1980s', '1970s'),
+    ('1960s', '1950s'),
+    ]
+
 class PicturesForm(forms.ModelForm):
     title = forms.CharField(help_text="What is your picture's title?")
     description = forms.CharField(help_text="Please tell us about a bit about your picture.")
     tag_one = forms.CharField(help_text="Please provide a word to describe your image. This will help people to find it")
     tag_two = forms.CharField(help_text="Please give us an additional word to describe the picture.")
+    era = forms.CharField(help_text="What era does this picture relate to?",widget=forms.Select(choices=ERA_CHOICES))
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
     class Meta:
         model = Pictures
-        fields = ('image', 'title', 'description', 'tag_one', 'tag_two',)
+        fields = ('image', 'title', 'description', 'tag_one', 'tag_two','era',)
  
 
 class CategoryForm(forms.ModelForm):
