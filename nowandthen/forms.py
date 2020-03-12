@@ -7,10 +7,11 @@ from nowandthen.models import UserProfile
 
 
 ERA_CHOICES= [
-    ('Present day', '2010s'),
-    ('2000-2010', '1990s'),
-    ('1980s', '1970s'),
-    ('1960s', '1950s'),
+    ('Present_day', 'Present Day'),
+    ('2010-2020', '2010-2020'),
+    ('2000-2010', '2000-2010'),
+    ('1990s', '1990s'),
+    ('1980s', '1980s')
     ]
 
 class PicturesForm(forms.ModelForm):
