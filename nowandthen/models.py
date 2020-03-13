@@ -3,12 +3,12 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
 class Pictures(models.Model):
-    NAME_MAX_LENGTH = 128
+    TITLE_MAX_LENGTH = 190
     DESCRIPTION_MAX_LENGTH = 1000
     TAG_MAX_LENGTH = 50
-    ERA_MAX_LENGTH = 50
+    ERA_MAX_LENGTH = 20
     image = models.ImageField(upload_to='shared_pics', unique=True) 
-    title = models.CharField(max_length=NAME_MAX_LENGTH, blank=True)
+    title = models.CharField(max_length=TITLE_MAX_LENGTH, blank=True)
     description = models.CharField(max_length=DESCRIPTION_MAX_LENGTH, blank=True)
     tag_one = models.CharField(max_length=TAG_MAX_LENGTH, blank=True)
     tag_two = models.CharField(max_length=TAG_MAX_LENGTH, blank=True)
