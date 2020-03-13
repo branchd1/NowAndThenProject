@@ -1,5 +1,5 @@
 from django import forms
-from nowandthen.models import Page, Category, Pictures
+from nowandthen.models import Page, Category, Pictures, Comment
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -36,6 +36,10 @@ class PicturesForm(forms.ModelForm):
             help_text_html=' <span class="helptext">%s</span>',
             errors_on_separate_row=True)   
  
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('name', 'email', 'body')
 
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(help_text="Please enter the category name.")

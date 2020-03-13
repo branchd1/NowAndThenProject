@@ -22,6 +22,22 @@ class Pictures(models.Model):
     def __str__(self):
         return self.title
 
+#Comment code here and elsewhere adapted from https://djangocentral.com/creating-comments-system-with-django/
+
+class Comment(models.Model):
+    image = models.ForeignKey(Pictures,on_delete=models.CASCADE,related_name='comments')
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.body, self.name)
+
 class Category(models.Model):
     NAME_MAX_LENGTH = 128
     name = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)

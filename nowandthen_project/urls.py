@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
 path('', views.index, name='index'),
 path('nowandthen/', include('nowandthen.urls')),
+path('/', views.image_detail, name='image_detail'),
 # The above maps any URLs starting with nowandthen/ to be handled by nowandthen.
 path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

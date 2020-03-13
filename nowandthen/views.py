@@ -1,10 +1,11 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from nowandthen.models import Category
 from nowandthen.models import Page
 from nowandthen.models import Pictures
 from nowandthen.forms import CategoryForm
 from nowandthen.forms import PicturesForm
+from nowandthen.forms import CommentForm
 from django.shortcuts import redirect
 from django.urls import reverse
 from nowandthen.forms import PageForm
@@ -33,6 +34,31 @@ def add_pictures(request):
 # Will handle the bad form, new form, or no form supplied cases.
 # Render the form with error messages (if any).
     return render(request, 'nowandthen/add_pictures.html', {'form': form})
+
+def image_detail(request, slug):
+    template_name = 'image_detail.html'
+    image = get_object_or_404(Pictures, slug=slug)
+    comments = image.comments.filter(active=True)
+    new_comment = None
+    # Comment posted
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+
+            # Create Comment object but don't save to database yet
+            new_comment = comment_form.save(commit=False)
+            # Assign the current post to the comment
+            new_comment.post = post
+            # Save the comment to the database
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+
+    return render(request, template_name, {'image': image,
+                                           'comments': comments,
+                                           'new_comment': new_comment,
+                                           'comment_form': comment_form})
+
 
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
