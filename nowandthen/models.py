@@ -13,8 +13,11 @@ class Pictures(models.Model):
     tag_one = models.CharField(max_length=TAG_MAX_LENGTH, blank=True)
     tag_two = models.CharField(max_length=TAG_MAX_LENGTH, blank=True)
     era = models.CharField(max_length= ERA_MAX_LENGTH, blank=True)
-    when_added = models.DateTimeField(auto_now = True)
+    when_added = models.DateTimeField(auto_now_add = True)
     #slug = models.SlugField(unique=True)
+
+    class Meta:
+        ordering = ['when_added']
 
     def __str__(self):
         return self.title
