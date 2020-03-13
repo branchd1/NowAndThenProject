@@ -13,7 +13,7 @@ class Pictures(models.Model):
     tag_one = models.CharField(max_length=TAG_MAX_LENGTH, blank=True)
     tag_two = models.CharField(max_length=TAG_MAX_LENGTH, blank=True)
     era = models.CharField(max_length= ERA_MAX_LENGTH, blank=True)
-    when_added = models.DateTimeField
+    when_added = models.DateTimeField(auto_now = True)
     #slug = models.SlugField(unique=True)
 
     def __str__(self):
