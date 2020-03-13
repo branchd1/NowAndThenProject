@@ -19,10 +19,9 @@ def add_pictures(request):
     form = PicturesForm()
     # A HTTP POST?
     if request.method == 'POST':
-        form = PicturesForm(request.POST)
+        form = PicturesForm(request.POST, request.FILES)
         # Have we been provided with a valid form?
         if form.is_valid():
-        # Save the new category to the database.
             form.save(commit=True)
         # Now that the category is saved, we could confirm this.
         # For now, just redirect the user back to the index view.

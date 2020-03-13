@@ -22,10 +22,19 @@ class PicturesForm(forms.ModelForm):
     tag_one = forms.CharField(help_text="Please provide a word to describe your image. This will help people to find it")
     tag_two = forms.CharField(help_text="Please give us an additional word to describe the picture.")
     era = forms.CharField(help_text="What era does this picture relate to?",widget=forms.Select(choices=ERA_CHOICES))
-    slug = forms.CharField(widget=forms.HiddenInput(), required=False)
+    #slug = forms.CharField(widget=forms.HiddenInput(), required=False)
+    image = forms.ImageField()
     class Meta:
         model = Pictures
         fields = ('image', 'title', 'description', 'tag_one', 'tag_two','era',)
+    def as_p(self):
+        "Returns this form rendered as HTML <p>s."
+        return self._html_output(
+            normal_row='<p%(html_class_attr)s>%(label)s %(field)s%(help_text)s</p>',
+            error_row='%s',
+            row_ender='</p>',
+            help_text_html=' <span class="helptext">%s</span>',
+            errors_on_separate_row=True)   
  
 
 class CategoryForm(forms.ModelForm):
@@ -73,3 +82,5 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('website', 'picture',)
+
+ 
