@@ -288,6 +288,6 @@ class SearchResultsView(ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         object_list = Picture.description.filter(
-            Q(description_icontains=query)
+            Q(tag_two_icontains=query)
         )
         return object_list
