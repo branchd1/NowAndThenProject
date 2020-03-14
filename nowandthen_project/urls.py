@@ -19,10 +19,12 @@ from django.urls import include
 from nowandthen import views
 from django.conf import settings
 from django.conf.urls.static import static
+
 urlpatterns = [
-path('', views.index, name='index'),
-path('nowandthen/', include('nowandthen.urls')),
-path('/', views.image_detail, name='image_detail'),
-# The above maps any URLs starting with nowandthen/ to be handled by nowandthen.
-path('admin/', admin.site.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                  path('', views.index, name='index'),
+                  path('nowandthen/', include('nowandthen.urls')),
+                  path('/', views.image_detail, name='image_detail'),
+                  # The above maps any URLs starting with nowandthen/ to be handled by nowandthen.
+                  path(r'^oauth/', include('social_django.urls', namespace='social')),
+                  path('admin/', admin.site.urls),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

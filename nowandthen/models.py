@@ -1,8 +1,10 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+from django.views.generic import ListView
 
-class Pictures(models.Model):
+
+class Picture(models.Model):
     TITLE_MAX_LENGTH = 190
     DESCRIPTION_MAX_LENGTH = 1000
     TAG_MAX_LENGTH = 50
@@ -18,6 +20,7 @@ class Pictures(models.Model):
 
     class Meta:
         ordering = ['when_added']
+        verbose_name_plural = 'Pictures'
 
     def __str__(self):
         return self.title
@@ -25,7 +28,7 @@ class Pictures(models.Model):
 #Comment code here and elsewhere adapted from https://djangocentral.com/creating-comments-system-with-django/
 
 class Comment(models.Model):
-    image = models.ForeignKey(Pictures,on_delete=models.CASCADE,related_name='comments')
+    image = models.ForeignKey(Picture, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
@@ -74,3 +77,6 @@ class UserProfile(models.Model):
     picture = models.ImageField(upload_to='profile_images', blank=True)
     def __str__(self):
         return self.user.username
+
+
+

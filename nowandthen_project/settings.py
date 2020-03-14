@@ -42,6 +42,7 @@ INSTALLED_APPS =[
 'django.contrib.messages',
 'django.contrib.staticfiles',
 'crispy_forms',
+'social_django',
 'nowandthen',
 ]
 
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'nowandthen_project.urls'
@@ -78,10 +80,18 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.twitter.TwitterOAuth',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 WSGI_APPLICATION = 'nowandthen_project.wsgi.application'
 
@@ -97,6 +107,8 @@ DATABASES = {
 }
 
 LOGIN_URL = 'nowandthen:login'
+LOGOUT_URL = 'nowandthen:logout'
+LOGIN_REDIRECT_URL = 'nowandthen:index'
 
 
 # Password validation

@@ -13,5 +13,6 @@ urlpatterns = [
     path('login/', views.user_login, name='login'),
     path('restricted/', views.restricted, name='restricted'),
     path('logout/', views.user_logout, name='logout'),
-    path('add_pictures/', views.add_pictures, name="add_pictures"),
+    path('add_picture/', views.add_picture, name="add_picture"),
+    path('search/', views.search_results, name='search_results'),
 ]

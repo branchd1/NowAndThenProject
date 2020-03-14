@@ -1,5 +1,5 @@
 from django import forms
-from nowandthen.models import Page, Category, Pictures, Comment
+from nowandthen.models import Page, Category, Picture, Comment
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -16,7 +16,7 @@ ERA_CHOICES= [
     ('1960s and earlier', '1960s and earlier')
     ]
 
-class PicturesForm(forms.ModelForm):
+class PictureForm(forms.ModelForm):
     title = forms.CharField(help_text="What is your picture's title?",widget=forms.TextInput(attrs={'size': '170'}), required=True)
     description = forms.CharField(help_text="Please tell us about a bit about your picture.", widget=forms.Textarea(), required=True)
     tag_one = forms.CharField(help_text="Please provide a word to describe your image. This will help people to find it.", required=False)
@@ -25,7 +25,7 @@ class PicturesForm(forms.ModelForm):
     #slug = forms.CharField(widget=forms.HiddenInput(), required=False)
     image = forms.ImageField()
     class Meta:
-        model = Pictures
+        model = Picture
         fields = ('image', 'title', 'description', 'tag_one', 'tag_two','era',)
     def as_p(self):
         #Returns this form rendered as HTML <p>s.

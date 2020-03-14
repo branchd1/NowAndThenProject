@@ -19,15 +19,13 @@
  {% block body_block %}
  <body>
     <div class="container text-center">
-        <div class="row h-100">
-            <div class="col-sm-6">
-                <p class="brownText">View Pictures</p>
-            </div>
-            <div class="col-sm-6">
-                <p class="brownText"><a href="{% url 'nowandthen:add_pictures' %}">Post Pictures</a></p>
-            </div>
-        </div>
+        <ul>
+        {% for self in object_list %}
+            <li>
+                {{ self.image }}
+            </li>
+        {% endfor %}
+        </ul>
     </div>
 </body>
  {% endblock %}
-

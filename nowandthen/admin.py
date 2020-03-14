@@ -1,5 +1,5 @@
 from django.contrib import admin
-from nowandthen.models import Category, Page, Pictures, Comment
+from nowandthen.models import Category, Page, Picture, Comment
 from nowandthen.models import UserProfile
 
 class PageAdmin(admin.ModelAdmin):
@@ -20,7 +20,7 @@ class CommentAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('name',)}
 
-admin.site.register(Pictures, PicturesAdmin)
+admin.site.register(Picture, PicturesAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Page, PageAdmin)
 admin.site.register(UserProfile)

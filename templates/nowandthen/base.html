@@ -55,6 +55,8 @@
   .navigation{
     display:flex;
     justify-content: space-around;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
   .vertical{
     vertical-align: middle;
@@ -87,7 +89,7 @@ Now & Then -
      <header>
         <h1 class="bigFont"><A href="{% url 'nowandthen:index' %}">Now&Then</A></h1>
         <h4>Glasgow</h4>
-        <h5>your pictures, your stories....</h5>
+        <h5>your self, your stories....</h5>
      </header>
  </div>
  <div>
@@ -95,7 +97,7 @@ Now & Then -
      <nav>
          <ul class="navigation">
              {% if user.is_authenticated %}
-                <li><a href="{ url 'nowandthen:search' }">search</a></li>
+                <li><form action="{% url 'nowandthen:search_results' %}" method="get"><input name="q" type="text" placeholder="Search..."></form></li>
                 <li><a href="{ url 'nowandthen:browse' }">browse</a></li>
                 <li><a href="{% url 'nowandthen:logout' %}">Logout</a></li>
              {% else %}

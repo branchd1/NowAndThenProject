@@ -1,12 +1,12 @@
 {% extends 'nowandthen/base.html' %}
 {% load staticfiles %}
 {% block title_block %}
-Add pictures
+Add self
 {% endblock %}
 {% block body_block %}
 <h1>Add a Picture</h1>
 <div>
-<form id="pictures_form" method="post" action="{% url 'nowandthen:add_pictures' %}" enctype="multipart/form-data" >
+<form id="picture_form" method="post" action="{% url 'nowandthen:add_pictures' %}" enctype="multipart/form-data" >
 {% csrf_token %}
 {{ form.as_p }}
 <input type="submit" name="submit" value="Add Pictures" />
