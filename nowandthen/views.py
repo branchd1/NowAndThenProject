@@ -20,7 +20,7 @@ from datetime import datetime
 #Method adapted from https://stackoverflow.com/questions/45226024/how-can-i-make-categories-in-a-image-gallery-in-django?fbclid=IwAR2-p5CeVAdPdpiYCJTDRlCW5-M_0AOMmKNygNBoEpv6v498Km8sySuFO3o
 
 def photo_list(request):
-    queryset = Photo.objects.all()
+    queryset = Picture.objects.all()
     context = {
     "photos": queryset,
 }
