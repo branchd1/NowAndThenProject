@@ -2,7 +2,6 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 from django.db.models import Q
-
 from nowandthen.models import Category
 from nowandthen.models import Page
 from nowandthen.models import Picture
@@ -38,7 +37,6 @@ def add_picture(request):
     # Will handle the bad form, new form, or no form supplied cases.
     # Render the form with error messages (if any).
     return render(request, 'nowandthen/add_picture.html', {'form': form})
-
 
 def image_detail(request, slug):
     template_name = 'image_detail.html'

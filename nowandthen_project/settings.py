@@ -46,7 +46,6 @@ INSTALLED_APPS =[
 'nowandthen',
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4' #I don't know if this is the version of Bootstrap being used - Jeff
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -132,7 +131,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'OPTIONS': { 'min_length': 6, }
     },
 ]
-
 
 
 # Internationalization
