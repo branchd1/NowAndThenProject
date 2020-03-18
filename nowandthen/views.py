@@ -26,6 +26,27 @@ def photo_list(request):
 }
     return render(request, 'photos/photos.html', context)
 
+def photo70_list(request):
+    queryset = Picture.objects.all()
+    context = {
+    "photos": queryset,
+}
+    return render(request, 'nowandthen/1970.html', context)
+
+def photo80_list(request):
+    queryset = Picture.objects.all()
+    context = {
+    "photos": queryset,
+}
+    return render(request, 'nowandthen/1980.html', context)
+
+def photo10_list(request):
+    queryset = Picture.objects.all()
+    context = {
+    "photos": queryset,
+}
+    return render(request, 'nowandthen/2010.html', context)
+
 @login_required
 def add_picture(request):
     form = PictureForm()

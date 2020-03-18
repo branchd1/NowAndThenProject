@@ -16,4 +16,7 @@ urlpatterns = [
     path('add_picture/', views.add_picture, name='add_picture'),
     path('search/', views.search_results, name='search_results'),
     path('photos/', views.search_results, name='photos'),
+    path('1970/', views.photo70_list, name='1970'),
+    path('1980/', views.photo80_list, name='1980'),
+    path('2010/', views.photo10_list, name='2010'),
 ]
