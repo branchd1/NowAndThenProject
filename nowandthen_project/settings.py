@@ -19,7 +19,6 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [STATIC_DIR, ]
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -31,21 +30,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
-INSTALLED_APPS =[
-'django.contrib.admin',
-'django.contrib.auth',
-'django.contrib.contenttypes',
-'django.contrib.sessions',
-'django.contrib.messages',
-'django.contrib.staticfiles',
-'crispy_forms',
-'social_django',
-'nowandthen',
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'crispy_forms',
+    'social_django',
+    'nowandthen',
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,10 +58,10 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'nowandthen_project.urls'
 
 PASSWORD_HASHERS = [
-'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
-'django.contrib.auth.hashers.BCryptPasswordHasher',
-'django.contrib.auth.hashers.PBKDF2PasswordHasher',
-'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
 ]
 
 TEMPLATES = [
@@ -94,7 +91,6 @@ AUTHENTICATION_BACKENDS = (
 
 WSGI_APPLICATION = 'nowandthen_project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
@@ -109,6 +105,8 @@ LOGIN_URL = 'nowandthen:login'
 LOGOUT_URL = 'nowandthen:logout'
 LOGIN_REDIRECT_URL = 'nowandthen:index'
 
+SOCIAL_AUTH_TWITTER_KEY = 'E8FgRNzK2XmpBWT6XsPxkPJSR'
+SOCIAL_AUTH_TWITTER_SECRET = 'Gnkf8gl27fWvta4vGbzsUU0GQDdkwJat97jV2JNuZKv88DjZVi'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -128,10 +126,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-        'OPTIONS': { 'min_length': 6, }
+        'OPTIONS': {'min_length': 6, }
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -145,7 +142,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
