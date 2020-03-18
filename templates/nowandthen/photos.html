@@ -1,12 +1,13 @@
-{% extends 'base/base.html' %}
+{% extends 'nowandthen/base.html' %}
 
-{% block contenido %}
+{% block body_block %}
 <br>
 <br>
 {% for photo in photos %}
 <h1>{{ photo.title }}</h1>
 {% if photo.image %}
 <img src="{{ photo.image.url }}" class="img-responsive">
+<img src="{{ some_object.image_field.url }}">
 {% endif %}
 {% endfor %}
 {% endblock  %}

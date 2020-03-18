@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 from django.db.models import Q
+from pip._vendor.requests import post
+
 from nowandthen.models import Category
 from nowandthen.models import Page
 from nowandthen.models import Picture
@@ -17,35 +19,40 @@ from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login, logout
 from datetime import datetime
 
-#Method adapted from https://stackoverflow.com/questions/45226024/how-can-i-make-categories-in-a-image-gallery-in-django?fbclid=IwAR2-p5CeVAdPdpiYCJTDRlCW5-M_0AOMmKNygNBoEpv6v498Km8sySuFO3o
+
+# Method adapted from https://stackoverflow.com/questions/45226024/how-can-i-make-categories-in-a-image-gallery-in-django?fbclid=IwAR2-p5CeVAdPdpiYCJTDRlCW5-M_0AOMmKNygNBoEpv6v498Km8sySuFO3o
 
 def photo_list(request):
     queryset = Picture.objects.all()
     context = {
-    "photos": queryset,
-}
-    return render(request, 'photos/photos.html', context)
+        "photos": queryset,
+    }
+    return render(request, 'nowandthen/photos.html', context)
+
 
 def photo70_list(request):
-    queryset = Picture.objects.all()
+    queryset = Picture.era.filter("1970s")
     context = {
-    "photos": queryset,
-}
+        "photos": queryset,
+    }
     return render(request, 'nowandthen/1970.html', context)
 
+
 def photo80_list(request):
-    queryset = Picture.objects.all()
+    queryset = Picture.era.filter("1980s")
     context = {
-    "photos": queryset,
-}
+        "photos": queryset,
+    }
     return render(request, 'nowandthen/1980.html', context)
 
+
 def photo10_list(request):
-    queryset = Picture.objects.all()
+    queryset = Picture.era.filter("2010s")
     context = {
-    "photos": queryset,
-}
+        "photos": queryset,
+    }
     return render(request, 'nowandthen/2010.html', context)
+
 
 @login_required
 def add_picture(request):
@@ -67,7 +74,8 @@ def add_picture(request):
     # Render the form with error messages (if any).
     return render(request, 'nowandthen/add_picture.html', {'form': form})
 
-#To do with comments:
+
+# To do with comments:
 
 def image_detail(request, slug):
     template_name = 'image_detail.html'
