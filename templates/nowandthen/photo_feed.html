@@ -1,0 +1,20 @@
+from nowandthen.models import Picture
+
+{% extends 'nowandthen/base.html' %}
+
+{% block body_block %}
+<br>
+<br>
+<ul>
+{% if pictures %}
+    <ul>
+    {% for p in pictures %}
+        <li><img src="{{ MEDIA_URL }}shared_pics/{{ image }}"></li>
+<!--        <li>{{ p.image.url }}</li>-->
+    {% endfor %}
+    </ul>
+{% else %}
+    <li><strong>There are no photographs present.</strong></li>
+{% endif %}
+</ul>
+{% endblock %}

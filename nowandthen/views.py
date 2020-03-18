@@ -31,7 +31,7 @@ def photo_list(request):
 
 
 def photo70_list(request):
-    queryset = Picture.era.filter("1970s")
+    queryset = Picture.objects.all()
     context = {
         "photos": queryset,
     }
@@ -39,7 +39,7 @@ def photo70_list(request):
 
 
 def photo80_list(request):
-    queryset = Picture.era.filter("1980s")
+    queryset = Picture.objects.all()
     context = {
         "photos": queryset,
     }
@@ -47,7 +47,7 @@ def photo80_list(request):
 
 
 def photo10_list(request):
-    queryset = Picture.era.filter("2010s")
+    queryset = Picture.objects.all()
     context = {
         "photos": queryset,
     }
@@ -73,6 +73,15 @@ def add_picture(request):
     # Will handle the bad form, new form, or no form supplied cases.
     # Render the form with error messages (if any).
     return render(request, 'nowandthen/add_picture.html', {'form': form})
+
+
+def photo_feed(request):
+    picture_list = Picture.objects.order_by('when_added')
+
+    context_dict = {}
+    context_dict['pictures'] = picture_list
+
+    return render(request, 'nowandthen/photo_feed.html', context=context_dict)
 
 
 # To do with comments:

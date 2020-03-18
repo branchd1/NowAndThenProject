@@ -19,4 +19,5 @@ urlpatterns = [
     path('1970/', views.photo70_list, name='1970'),
     path('1980/', views.photo80_list, name='1980'),
     path('2010/', views.photo10_list, name='2010'),
+    path('photo_feed/', views.photo_feed, name='photo_feed'),
 ]
